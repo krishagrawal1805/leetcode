@@ -1,22 +1,24 @@
 class Solution {
 public:
     int secondHighest(string s) {
-        int n = s.size();
-        sort(s.begin(), s.end());
-        int i = 0;
-        int maxx = -1;
-        int maxi = -1;
-        while (i < n && s[i]<'a') {
-           if(maxx<s[i]){
-            maxi=maxx;
-            maxx=s[i];
-           }
-           
-            i++;
-        }
-        if(maxi == -1){
-         return -1;
-        }
-        return maxi-'0';
+       char largest = -1;
+char secondLargest = -1;
+
+for (char c : s) {
+    if (!isdigit(c)) continue;
+
+    if (c > largest) {
+        secondLargest = largest;
+        largest = c;
+    }
+    else if (c > secondLargest && c != largest) {
+        secondLargest = c;
+    }
+}
+
+if (secondLargest == -1)
+    return -1;
+
+return secondLargest - '0';
     }
 };
