@@ -1,16 +1,12 @@
 class Solution {
 public:
     bool isMiddleElementUnique(vector<int>& nums) {
-        unordered_map<int,int>f;
-        int n=nums.size();
-        for(auto i:nums){
-            f[i]++;
+        unordered_map<int, int> f;
+
+        for (int x : nums) {
+            f[x]++;
         }
-         
-        if(f[nums[n/2]]==1){
-            return true;
-        }
-      
-        return false;
+
+        return f[nums[nums.size() / 2]] == 1;
     }
 };
